@@ -49,13 +49,13 @@ Global Protect provides a way to run scripts after the VPN is connected.
 
 
 1. Create a Scheduled Task as Administrator named "WSL-reset-network".
-    - Action / Start a program: wsl.exe powershell.exe -Command "$(cat /home/dave/git/dwbconsulting/WSL2VPN-networkfix/wsl2vpn-fix.ps1)"
+    - Action / Start a program: wsl.exe powershell.exe -Command "$(cat /home/dave/git/dwbcodes/WSL2VPN-networkfix/wsl2vpn-fix.ps1)"
     - Ensure the task is "Run with Highest Permissions"
 2. Create a registry post connect command for Global Connect
 ```    
 $registryPath = "HKLM:\SOFTWARE\Palo Alto Networks\GlobalProtect\Settings\post-vpn-connect"
 $scriptPath = "schtasks /run /tn WSL-reset-network"
-#$scriptPath = "\\wsl$\Ubuntu-22.04\home\dave\git\dwbconsulting\WSL2VPN-networkfix\wsl2vpn-fix.ps1"
+#$scriptPath = "\\wsl$\Ubuntu-22.04\home\dave\git\dwbcodes\WSL2VPN-networkfix\wsl2vpn-fix.ps1"
 if (!(Test-Path $registryPath)) {
   New-Item -Path $registryPath -Force
 }
