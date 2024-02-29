@@ -62,8 +62,11 @@ if (!(Test-Path $registryPath)) {
 Set-ItemProperty -Path $registryPath -Name "command" -Value $scriptPath
 
 ```
-3. Test the task works from a non priviledged user.
-    -  schtasks /run /tn "WSL-reset-network"
+3. Test the task works from a non privileged user.
+    - Windows
+      - schtasks /run /tn "WSL-reset-network"
+    - WSL Linux
+      - schtasks.exe /run /tn "WSL-reset-network"
 
 
 ## Prerequisites.
